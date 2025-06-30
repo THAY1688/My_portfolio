@@ -4,39 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Koemthay Tha - UX/UI Designer</title>
-    <script src="js/main.js"></script>
+    <script src="./js/main.js" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="./css/main.css">
 </head>
 <body class="min-h-screen">
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+    <!-- Theme Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon text-white"></i>
+    </div>
+    
     <div id="app" class="container mx-auto px-4 py-8 max-w-6xl">
         <!-- Header Section -->
         <header class="flex flex-col md:flex-row justify-between items-center mb-12">
             <div class="flex flex-col md:flex-row items-center mb-6 md:mb-0">
-                <img src="image/Favorite image.jpg"
-                    alt="" class="profile-picture rounded-full mr-6 mb-4 md:mb-0 floating">
+                <img src="./image/Favorite image.jpg"
+                    alt="Koemthay Tha" class="profile-picture rounded-full mr-6 mb-4 md:mb-0 floating">
                 <div class="text-center md:text-left">
                     <h1 class="text-3xl md:text-4xl font-bold gradient-text mb-1">KOEMTHAY THA</h1>
                     <h2 class="text-xl md:text-2xl text-indigo-300">UX/UI Design Intern</h2>
                     <p class="text-gray-400 mt-1">Passionate about creating intuitive and beautiful digital experiences</p>
-                    <img src="" alt="">
                     <div class="flex justify-center md:justify-start space-x-3 mt-3">
-                        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:text-indigo-400 transition-colors">
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:text-indigo-400 transition-colors pulse">
                             <i class="fab fa-linkedin-in"></i>
                         </a>
-                        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:text-gray-100 transition-colors">
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:text-pink-400 transition-colors pulse">
+                            <i class="fab fa-behance"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:text-gray-100 transition-colors pulse">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
                 </div>
             </div>
             <div class="flex space-x-3">
-                <a href="#contact" class="gradient-bg hover:opacity-90 text-white px-4 py-2 rounded-lg transition-colors flex items-center">
+                <a href="#contact" class="gradient-bg hover:opacity-90 text-white px-4 py-2 rounded-lg transition-colors flex items-center pulse">
                     <i class="fas fa-envelope mr-2"></i> Contact
                 </a>
-                <a href="#" class="bg-gray-800 hover:bg-gray-700 text-indigo-300 px-4 py-2 rounded-lg transition-colors flex items-center">
+                <a href="#" @click="downloadResume" class="bg-gray-800 hover:bg-gray-700 text-indigo-300 px-4 py-2 rounded-lg transition-colors flex items-center">
                     <i class="fas fa-file-download mr-2"></i> Resume
                 </a>
             </div>
@@ -57,7 +69,7 @@
         <!-- Main Content -->
         <main>
             <!-- About Section -->
-            <section id="about" class="mb-16">
+            <section id="about" class="mb-16 scroll-animate">
                 <h2 class="text-3xl font-bold gradient-text mb-6">About Me</h2>
                 <hr class="section-divider">
                 
@@ -67,11 +79,11 @@
                     <p class="text-gray-300 mb-4">I have practical experience using tools like Figma, Adobe XD, Canva, and Balsamiq to create wireframes, interactive prototypes, and high-fidelity mockups. I understand design principles, color theory, typography, and responsive design, which I've applied across multiple projects.</p>
                     
                     <div class="grid md:grid-cols-2 gap-6 mt-6">
-                        <div>
+                        <div class="scroll-animate delay-100">
                             <h3 class="text-xl font-semibold text-indigo-300 mb-3">Design Approach</h3>
                             <p class="text-gray-300">I combine design thinking methodology with user research and usability testing to create solutions that are not only visually appealing but also highly functional and user-friendly.</p>
                         </div>
-                        <div>
+                        <div class="scroll-animate delay-200">
                             <h3 class="text-xl font-semibold text-indigo-300 mb-3">Technical Knowledge</h3>
                             <p class="text-gray-300">My basic knowledge of front-end development (HTML, CSS, JavaScript) helps me collaborate effectively with developers to ensure designs are implemented accurately.</p>
                         </div>
@@ -80,18 +92,18 @@
             </section>
 
             <!-- Projects Section -->
-            <section id="projects" class="mb-16">
+            <section id="projects" class="mb-16 scroll-animate">
                 <h2 class="text-3xl font-bold gradient-text mb-6">Featured Projects</h2>
                 <hr class="section-divider">
                 
                 <div class="grid md:grid-cols-2 gap-6">
-                    <div class="project-card card p-6">
+                    <div class="project-card card p-6 scroll-animate delay-100">
                         <div class="h-40 bg-gray-700 rounded-lg mb-4 overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" 
                                  alt="Task Management App" class="w-full h-full object-cover">
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Task Management Web Application</h3>
-                        <p class="text-gray-400 text-sm mb-3">Lead UX/UI Designer</p>
+                        <h3 class="text-xl font-bold mb-2">Inventory Management System</h3>
+                        <p class="text-gray-400 text-sm mb-3">UX/UI Design</p>
                         <p class="text-gray-300 text-sm mb-4">Led the UX/UI design process including conducting user interviews, creating personas, and developing interactive prototypes to improve task management workflows.</p>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-pill text-xs bg-gray-800 text-indigo-300 px-2 py-1 rounded-full">Figma</span>
@@ -100,27 +112,12 @@
                         </div>
                     </div>
                     
-                    <div class="project-card card p-6">
-                        <div class="h-40 bg-gray-700 rounded-lg mb-4 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" 
-                                 alt="Health & Fitness App" class="w-full h-full object-cover">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Health & Fitness App UI</h3>
-                        <p class="text-gray-400 text-sm mb-3">UI Designer</p>
-                        <p class="text-gray-300 text-sm mb-4">Contributed to the UI design of a health tracking mobile application with focus on usability and data visualization for fitness metrics.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="skill-pill text-xs bg-gray-800 text-indigo-300 px-2 py-1 rounded-full">Adobe XD</span>
-                            <span class="skill-pill text-xs bg-gray-800 text-indigo-300 px-2 py-1 rounded-full">Mobile Design</span>
-                            <span class="skill-pill text-xs bg-gray-800 text-indigo-300 px-2 py-1 rounded-full">Visual Design</span>
-                        </div>
-                    </div>
-                    
-                    <div class="project-card card p-6">
+                    <div class="project-card card p-6 scroll-animate delay-200">
                         <div class="h-40 bg-gray-700 rounded-lg mb-4 overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" 
                                  alt="E-commerce Redesign" class="w-full h-full object-cover">
                         </div>
-                        <h3 class="text-xl font-bold mb-2">E-commerce Landing Page Redesign</h3>
+                        <h3 class="text-xl font-bold mb-2">E-commerce Website</h3>
                         <p class="text-gray-400 text-sm mb-3">UX Designer</p>
                         <p class="text-gray-300 text-sm mb-4">Redesigned landing page for a shoe and bag e-commerce platform to improve user experience, responsiveness, and conversion rates.</p>
                         <div class="flex flex-wrap gap-2">
@@ -130,7 +127,7 @@
                         </div>
                     </div>
                     
-                    <div class="project-card card p-6">
+                    <div class="project-card card p-6 scroll-animate delay-300">
                         <div class="h-40 bg-gray-700 rounded-lg mb-4 overflow-hidden">
                             <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" 
                                  alt="PNC Website" class="w-full h-full object-cover">
@@ -148,12 +145,12 @@
             </section>
 
             <!-- Experience Section -->
-            <section id="experience" class="mb-16">
+            <section id="experience" class="mb-16 scroll-animate">
                 <h2 class="text-3xl font-bold gradient-text mb-6">Experience</h2>
                 <hr class="section-divider">
                 
                 <div class="space-y-6">
-                    <div class="timeline-item card p-6">
+                    <div class="timeline-item card p-6 scroll-animate delay-100">
                         <div class="flex flex-col md:flex-row md:justify-between md:items-start">
                             <div>
                                 <h3 class="text-xl font-bold">UX/UI Designer</h3>
@@ -171,126 +168,9 @@
                             <span class="skill-pill text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded-full">User Research</span>
                             <span class="skill-pill text-xs bg-gray-800 text-gray-300 px-2 py-1 rounded-full">Prototyping</span>
                         </div>
-                    </div><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Koemthay Tha - UX/UI Designer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/main.css">
-</head>
-<body class="min-h-screen">
-    <div id="app" class="container mx-auto px-4 py-8 max-w-6xl">
-        <!-- Header Section -->
-        <header class="flex flex-col md:flex-row justify-between items-center mb-12">
-            <div class="flex flex-col md:flex-row items-center mb-6 md:mb-0">
-                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&h=200&q=80" 
-                     alt="Koemthay Tha" class="profile-picture rounded-full mr-6 mb-4 md:mb-0 floating">
-                <div class="text-center md:text-left">
-                    <h1 class="text-3xl md:text-4xl font-bold gradient-text mb-1">KOEMTHAY THA</h1>
-                    <h2 class="text-xl md:text-2xl text-indigo-300">UX/UI Design Intern</h2>
-                    <p class="text-gray-400 mt-1">Passionate about creating intuitive and beautiful digital experiences</p>
-                    
-                    <div class="flex justify-center md:justify-start space-x-3 mt-3">
-                        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:text-indigo-400 transition-colors">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:text-pink-400 transition-colors">
-                            <i class="fab fa-behance"></i>
-                        </a>
-                        <a href="#" class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:text-gray-100 transition-colors">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="flex space-x-3">
-                <a href="#contact" class="gradient-bg hover:opacity-90 text-white px-4 py-2 rounded-lg transition-colors flex items-center">
-                    <i class="fas fa-envelope mr-2"></i> Contact
-                </a>
-                <a href="#" class="bg-gray-800 hover:bg-gray-700 text-indigo-300 px-4 py-2 rounded-lg transition-colors flex items-center">
-                    <i class="fas fa-file-download mr-2"></i> Resume
-                </a>
-            </div>
-        </header>
-
-        <!-- Navigation -->
-        <nav class="mb-8 sticky top-0 bg-gray-900 bg-opacity-90 backdrop-blur-sm py-3 z-10 rounded-lg shadow-sm">
-            <ul class="flex flex-wrap justify-center gap-3 md:gap-6">
-                <li><a href="#about" class="nav-link px-3 py-1 text-sm md:text-base">About</a></li>
-                <li><a href="#projects" class="nav-link px-3 py-1 text-sm md:text-base">Projects</a></li>
-                <li><a href="#experience" class="nav-link px-3 py-1 text-sm md:text-base">Experience</a></li>
-                <li><a href="#skills" class="nav-link px-3 py-1 text-sm md:text-base">Skills</a></li>
-                <li><a href="#education" class="nav-link px-3 py-1 text-sm md:text-base">Education</a></li>
-                <li><a href="#contact" class="nav-link px-3 py-1 text-sm md:text-base">Contact</a></li>
-            </ul>
-        </nav>
-
-        <!-- Main Content -->
-        <main>
-            <!-- About Section -->
-            <section id="about" class="mb-16">
-                <h2 class="text-3xl font-bold gradient-text mb-6">About Me</h2>
-                <hr class="section-divider">
-                
-                <div class="card p-6 md:p-8">
-                    <p class="text-gray-300 mb-4">I am a second-year student at Passerelles numériques Cambodia (PNC), specializing in web development with a passion for UX/UI design. With hands-on experience in user-focused design projects, I bring creativity and user-centered thinking to every project.</p>
-                    
-                    <p class="text-gray-300 mb-4">I have practical experience using tools like Figma, Adobe XD, Canva, and Balsamiq to create wireframes, interactive prototypes, and high-fidelity mockups. I understand design principles, color theory, typography, and responsive design, which I've applied across multiple projects.</p>
-                    
-                    <div class="grid md:grid-cols-2 gap-6 mt-6">
-                        <div>
-                            <h3 class="text-xl font-semibold text-indigo-300 mb-3">Design Approach</h3>
-                            <p class="text-gray-300">I combine design thinking methodology with user research and usability testing to create solutions that are not only visually appealing but also highly functional and user-friendly.</p>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-semibold text-indigo-300 mb-3">Technical Knowledge</h3>
-                            <p class="text-gray-300">My basic knowledge of front-end development (HTML, CSS, JavaScript) helps me collaborate effectively with developers to ensure designs are implemented accurately.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Projects Section -->
-            <section id="projects" class="mb-16">
-                <h2 class="text-3xl font-bold gradient-text mb-6">Featured Projects</h2>
-                <hr class="section-divider">
-                
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="project-card card p-6">
-                        <div class="h-40 bg-gray-700 rounded-lg mb-4 overflow-hidden">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&h=400&q=80" 
-                                 alt="Task Management App" class="w-full h-full object-cover">
-                        </div>
-                        <h3 class="text-xl font-bold mb-2">Inventory Management System</h3>
-                        <p class="text-gray-400 text-sm mb-3">Lead UX/UI Designer</p>
-                        <p class="text-gray-300 text-sm mb-4">Led the UX/UI design process including conducting user interviews, creating personas, and developing interactive prototypes to improve task management workflows.</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="skill-pill text-xs bg-gray-800 text-indigo-300 px-2 py-1 rounded-full">Figma</span>
-                            <span class="skill-pill text-xs bg-gray-800 text-indigo-300 px-2 py-1 rounded-full">User Research</span>
-                            <span class="skill-pill text-xs bg-gray-800 text-indigo-300 px-2 py-1 rounded-full">Prototyping</span>
-                        </div>
                     </div>
                     
-                    <!-- Other project cards would go here -->
-                    <!-- ... -->
-                </div>
-            </section>
-
-            <!-- Other sections would go here -->
-            <!-- ... -->
-
-        </main>
-
-    </div>
-
-</body>
-</html>
-                    
-                    <div class="timeline-item card p-6">
+                    <div class="timeline-item card p-6 scroll-animate delay-200">
                         <div class="flex flex-col md:flex-row md:justify-between md:items-start">
                             <div>
                                 <h3 class="text-xl font-bold">Design Project Team Member</h3>
@@ -310,7 +190,7 @@
                         </div>
                     </div>
                     
-                    <div class="timeline-item card p-6">
+                    <div class="timeline-item card p-6 scroll-animate delay-300">
                         <div class="flex flex-col md:flex-row md:justify-between md:items-start">
                             <div>
                                 <h3 class="text-xl font-bold">Javascript Project Team Member</h3>
@@ -333,12 +213,12 @@
             </section>
 
             <!-- Skills Section -->
-            <section id="skills" class="mb-16">
+            <section id="skills" class="mb-16 scroll-animate">
                 <h2 class="text-3xl font-bold gradient-text mb-6">Skills</h2>
                 <hr class="section-divider">
                 
                 <div class="grid md:grid-cols-3 gap-6">
-                    <div class="card p-6">
+                    <div class="card p-6 scroll-animate delay-100">
                         <h3 class="text-xl font-semibold text-indigo-300 mb-4">Design Tools</h3>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-pill text-sm bg-gray-800 text-indigo-300 px-3 py-1.5 rounded-full flex items-center">
@@ -356,7 +236,7 @@
                         </div>
                     </div>
                     
-                    <div class="card p-6">
+                    <div class="card p-6 scroll-animate delay-200">
                         <h3 class="text-xl font-semibold text-indigo-300 mb-4">Technical Skills</h3>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-pill text-sm bg-gray-800 text-pink-300 px-3 py-1.5 rounded-full">HTML</span>
@@ -369,7 +249,7 @@
                         </div>
                     </div>
                     
-                    <div class="card p-6">
+                    <div class="card p-6 scroll-animate delay-300">
                         <h3 class="text-xl font-semibold text-indigo-300 mb-4">Soft Skills</h3>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-pill text-sm bg-gray-800 text-purple-300 px-3 py-1.5 rounded-full">Task Management</span>
@@ -384,16 +264,16 @@
                 </div>
                 
                 <div class="grid md:grid-cols-2 gap-6 mt-6">
-                    <div class="card p-6">
+                    <div class="card p-6 scroll-animate delay-400">
                         <h3 class="text-xl font-semibold text-indigo-300 mb-4">Languages</h3>
                         <div class="space-y-3">
                             <div>
                                 <div class="flex justify-between mb-1">
                                     <span class="text-sm">Khmer</span>
-                                    <span class="text-xs text-gray-400">Mother Togue</span>
+                                    <span class="text-xs text-gray-400">Mother Tongue</span>
                                 </div>
                                 <div class="language-level">
-                                    <div class="language-level-fill" style="width: 80%"></div>
+                                    <div class="language-level-fill" style="width: 100%"></div>
                                 </div>
                             </div>
                             <div>
@@ -408,7 +288,7 @@
                         </div>
                     </div>
                     
-                    <div class="card p-6">
+                    <div class="card p-6 scroll-animate delay-500">
                         <h3 class="text-xl font-semibold text-indigo-300 mb-4">Interests</h3>
                         <div class="flex flex-wrap gap-2">
                             <span class="skill-pill text-sm bg-gray-800 text-indigo-300 px-3 py-1.5 rounded-full">Learning new tools</span>
@@ -422,12 +302,12 @@
             </section>
 
             <!-- Education Section -->
-            <section id="education" class="mb-16">
+            <section id="education" class="mb-16 scroll-animate">
                 <h2 class="text-3xl font-bold gradient-text mb-6">Education & Training</h2>
                 <hr class="section-divider">
                 
                 <div class="card p-6">
-                    <div class="timeline-item">
+                    <div class="timeline-item scroll-animate delay-100">
                         <div class="flex flex-col md:flex-row md:justify-between md:items-start">
                             <div>
                                 <h3 class="text-xl font-bold">Web Development Program</h3>
@@ -439,16 +319,16 @@
                     </div>
                     
                     <div class="mt-6 grid md:grid-cols-3 gap-6">
-                        <div class="bg-gray-800 rounded-lg p-4">
+                        <div class="bg-gray-800 rounded-lg p-4 scroll-animate delay-200">
                             <h4 class="font-medium text-pink-300 mb-2">UX/UI Design Workshops</h4>
                             <p class="text-gray-300 text-sm">FEB 07, 2025 – MAR 14, 2025</p>
                             <p class="text-gray-300 text-sm mt-1">Presented by Philip James BARDON. From requirements to prototypes. Mini project: apply design logic.</p>
                         </div>
-                        <div class="bg-gray-800 rounded-lg p-4">
+                        <div class="bg-gray-800 rounded-lg p-4 scroll-animate delay-300">
                             <h4 class="font-medium text-pink-300 mb-2">Project Management</h4>
                             <p class="text-gray-300 text-sm">Presented by Felix Leuker. PO, Scrum Master, Dev Team, tools (Jira, Git, GitHub), agile basics.</p>
                         </div>
-                        <div class="bg-gray-800 rounded-lg p-4">
+                        <div class="bg-gray-800 rounded-lg p-4 scroll-animate delay-400">
                             <h4 class="font-medium text-pink-300 mb-2">Data Analytics</h4>
                             <p class="text-gray-300 text-sm">Presented by Felix Leuker. Data prep & visualization with Python and Power BI.</p>
                         </div>
@@ -457,17 +337,17 @@
             </section>
 
             <!-- Contact Section -->
-            <section id="contact" class="mb-12">
+            <section id="contact" class="mb-12 scroll-animate">
                 <h2 class="text-3xl font-bold gradient-text mb-6">Get In Touch</h2>
                 <hr class="section-divider">
                 
                 <div class="grid md:grid-cols-2 gap-8">
-                    <div class="card p-6">
+                    <div class="card p-6 scroll-animate delay-100">
                         <h3 class="text-xl font-semibold text-indigo-300 mb-4">Contact Information</h3>
                         
                         <div class="space-y-4">
                             <div class="flex items-start">
-                                <div class="w-10 h-10 rounded-full bg-indigo-500 bg-opacity-20 flex items-center justify-center text-indigo-300 mr-4 mt-1">
+                                <div class="w-10 h-10 rounded-full bg-indigo-500 bg-opacity-20 flex items-center justify-center text-indigo-300 mr-4 mt-1 pulse">
                                     <i class="fas fa-phone-alt"></i>
                                 </div>
                                 <div>
@@ -477,7 +357,7 @@
                             </div>
                             
                             <div class="flex items-start">
-                                <div class="w-10 h-10 rounded-full bg-pink-500 bg-opacity-20 flex items-center justify-center text-pink-300 mr-4 mt-1">
+                                <div class="w-10 h-10 rounded-full bg-pink-500 bg-opacity-20 flex items-center justify-center text-pink-300 mr-4 mt-1 pulse">
                                     <i class="fas fa-envelope"></i>
                                 </div>
                                 <div>
@@ -487,7 +367,7 @@
                             </div>
                             
                             <div class="flex items-start">
-                                <div class="w-10 h-10 rounded-full bg-purple-500 bg-opacity-20 flex items-center justify-center text-purple-300 mr-4 mt-1">
+                                <div class="w-10 h-10 rounded-full bg-purple-500 bg-opacity-20 flex items-center justify-center text-purple-300 mr-4 mt-1 pulse">
                                     <i class="fas fa-map-marker-alt"></i>
                                 </div>
                                 <div>
@@ -498,7 +378,7 @@
                         </div>
                     </div>
                     
-                    <div class="card p-6">
+                    <div class="card p-6 scroll-animate delay-200">
                         <h3 class="text-xl font-semibold text-indigo-300 mb-4">References</h3>
                         
                         <div class="space-y-4">
